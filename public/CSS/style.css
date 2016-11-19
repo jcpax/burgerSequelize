@@ -1,0 +1,35 @@
+body {
+	width: 100%;
+	background-color: 
+}
+
+h1 {
+	font-family: 'Lobster', cursive;
+	font-size: 20%;
+	text-align: center;
+}
+
+h2 {
+	font-family: 'Patua One', cursive;
+}
+
+.sides {
+	width: 40%;
+	margin: 10%;
+}
+
+#left {
+	float: left;
+}
+
+#right {
+	float: right;
+}
+ul {
+	list-style-type: none;
+}
+li {
+	text-decoration: none;
+}
+
+#009ECE #FF9E00 #F7D708 #CE0000 #9CCF31
