@@ -1,0 +1,97 @@
+<div class="container-fluid">
+
+<!-- HEADER -->
+
+<h1 style="font-family: 'Lobster', cursive; font-size: 100px; text-align: center; color:#009ECE;">Best Burgers</h1>
+
+<hr style="background-color:#CE0000; height:2px; width:75%;">
+
+<!-- LEFT SIDE -->
+<div class="row">
+
+<div class="col-md-6 text-center text-center">
+<div class="sides" id="left">
+  <h2 style="font-family: 'Patua One', cursive; text-align: center; color:#9CCF31;">Burger of the Day Menu</h2>
+    <ul style="list-style-type:none; text-align: center;">
+    {{#each burgers}}
+      {{#unless this.devoured}}
+        <div class="eachBurger">
+          <li stlye="text-align: center;">
+            <br>
+            {{this.burger_name}}
+            <br>
+            <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+              <input type="hidden" name="devoured" value="true">
+              <button type="submit" class="btn btn-warning">Put it on the table!</button>
+            </form>
+
+            <form action="burgers/delete/{{this.id}}?_method=DELETE" method="POST">
+              <input type="hidden" name="delete" value="true">
+              <button type="submit" class="btn btn-warning">Get rid of that burger!</button>
+            </form>
+          </li>
+        </div>
+      {{/unless}}
+    {{/each}}
+  </ul>
+
+</div>
+</div>
+
+
+<!-- RIGHT SIDE -->
+<div class="col-md-6">
+<div class="sides" id="right">
+  <h2 style="font-family: 'Patua One', cursive; text-align: center;color:#9CCF31;">Your Current Orders</h2>
+  <ul style="list-style-type:none; text-align: center;">
+    {{#each burgers}}
+      {{#if this.devoured}}
+        <div class="eachBurger">
+        <li stlye="text-align: center;">
+          <br>
+          {{this.burger_name}}
+          <br>
+          <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="devoured" value="false">
+            <button type="submit" class="btn btn-warning">Put it on the menu!</button>
+          </form>
+
+          <form action="burgers/delete/{{this.id}}?_method=DELETE" method="POST">
+            <input type="hidden" name="delete" value="true">
+            <button type="submit" class="btn btn-warning">Get rid of that burger!</button>
+          </form>
+        </li>
+      </div>
+      {{/if}}
+    {{/each}}
+  </ul>
+  </div>
+</div>
+</div>
+
+</div>
+<!-- ADD A BURGER -->
+<div class="addBurger text-center">
+  <br><br>
+  <h2>Add a Burger</h2>
+  <br>
+  <form class="create-update-form" action="burgers/create" method="POST">
+
+    <div class="form-group">
+      <label for="burger">Burger Name:</label>
+      <input type="text" id="burger" name="burger_name">
+    </div>
+
+    <div class="form-group">
+      <label for="eat">Where the burger at?</label><br>
+      <input type="radio" name="devoured" value="1" checked> On Your Order<br>
+      <input type="radio" name="devoured" value="0"> Add to the Menu
+    </div>
+
+    <button type="submit">Add Burger</button>
+  </form>
+  </div>
+
+<!-- FOOTER -->
+
+</div>
